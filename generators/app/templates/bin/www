@@ -1,2 +1,2 @@
 #!/bin/bash
-NODE_PATH=lib node $(dirname $0)/../index.js "$@"
+$(which node) $(dirname "$(readlink -f "$0")")/../index.js "$@"

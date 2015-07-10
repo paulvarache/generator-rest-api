@@ -28,7 +28,7 @@ module.exports = function (grunt) {
             post_debian: {
                 expand: true,
                 flatten: true,
-                src: ['<%%= debian_package.build.working_directory %>/**/*'],
+                src: ['<%%= deb_package.build.working_directory %>/**/*'],
                 dest: 'build/'
             }
         },
@@ -38,11 +38,11 @@ module.exports = function (grunt) {
             },
             build: {
                 src: [
-                    '<%%= debian_package.build.working_directory %>',
+                    '<%%= deb_package.build.working_directory %>',
                     '<%%= copy.build.dest %>']
             }
         },
-        debian_package: {
+        deb_package: {
             options: {
                 maintainer: {
                     name: 'Ysance (Paul Varache)',
@@ -56,7 +56,7 @@ module.exports = function (grunt) {
                 cwd: '<%%= copy.build.dest %>',
                 src: [
                     '**/*',
-                    '!<%%= debian_package.build.working_directory %>/**/*'
+                    '!<%%= deb_package.build.working_directory %>/**/*'
                 ],
                 working_directory: 'tmp',
                 dest: '<%%= yeoman.deb.deb_dest %>'
@@ -72,11 +72,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
 
     <% if (debian_package) { %>
-        grunt.loadNpmTasks('grunt-debian-package');
+        grunt.loadNpmTasks('grunt-deb');
         grunt.loadNpmTasks('grunt-contrib-clean');
         grunt.loadNpmTasks('grunt-contrib-copy');
         grunt.loadNpmTasks('grunt-npm-inst');
     <% } %>
 
-    grunt.registerTask('default', ['jshint', <% if (debian_package) { %> 'clean:pre_build', 'copy:build', 'npm_install:build', 'debian_package', 'copy:post_debian', 'clean:build' <% } %> ]);
+    grunt.registerTask('default', ['jshint', <% if (debian_package) { %> 'clean:pre_build', 'copy:build', 'npm_install:build', 'deb_package', 'copy:post_debian', 'clean:build' <% } %> ]);
 };

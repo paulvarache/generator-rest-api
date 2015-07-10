@@ -33,7 +33,7 @@ module.exports = generators.Base.extend({
         function (answers) {
             this.name = answers.name;
             if (answers.debian_package) {
-                NPM_DEV.push('grunt-debian-package');
+                NPM_DEV.push('grunt-deb');
                 this.prompt([{
                     type: 'input',
                     name: 'deb_dest',
