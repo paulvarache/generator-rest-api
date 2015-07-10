@@ -1,0 +1,1 @@
+    server.<%= method %>('<%= url %>', <%= controllerName %>Controller.<%= method %><%= methodName %>);

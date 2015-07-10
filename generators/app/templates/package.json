@@ -1,0 +1,17 @@
+{
+  "name": "<%= name %>",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "grunt jshint",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "./bin/www --config=./config/dev.js --log_level=DEBUG | bunyan"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+
+  }
+}
