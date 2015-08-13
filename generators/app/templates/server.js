@@ -3,7 +3,7 @@ module.exports = function (opts) {
     var restify = require('restify'),
         log = require('service/Logger');
 
-    log.opts = opts.log_level;
+    log.level(opts.log_level);
 
     var server = restify.createServer({
         name: '<%= name %>',
